@@ -1,0 +1,36 @@
+<div class="header align-content-center">
+    <div class="navbar navbar-expand">
+        <div class="col-6">
+            <a href="{{ path('app_home') }}"><img src="{{ asset('assets/images/logo.svg') }}" alt="Logo Green Goodies"></a>
+        </div>
+        {% if app.user %}
+            <div class="col-6 border border-danger">
+                <ul class="navbar-nav m-auto justify-content-evenly">
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link linkColor">Nos produits</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link linkColor">Mon panier</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link linkColor">Mon compte</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="{{ path('app_logout') }}" class="nav-link linkColor">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        {% else %}
+            <div class="col-6">
+                <ul class="navbar-nav m-auto justify-content-end">
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link linkColor">Connexion</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link linkColor">Inscription</a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>

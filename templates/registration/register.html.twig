@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GreenGoodies - Inscription{% endblock %}
+
+{% block body %}
+    <div class="register">
+        <div class="col-6">
+            <img src="{{ asset('assets/images/foliage.webp') }}" alt="" class="registerImg">
+        </div>
+        <div class="col-6">
+            <div class="col-6 p-2 m-auto">
+                <p class="h3 mt-5">Inscription</p>
+                <p class="mt-4">Tous les champs sont obligatoires</p>
+
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm) }}
+                <p class="mt-2">
+                    {{ form_row(registrationForm.lastName) }}
+                </p>
+                <p class="mt-2">
+                    {{ form_row(registrationForm.firstName) }}
+                </p>
+                <p class="mt-2">
+                    {{ form_row(registrationForm.email) }}
+                </p>
+                <p class="mt-2">
+                    {{ form_row(registrationForm.password) }}
+                </p>
+                <p class="mt-2">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </p>
+
+                <button type="submit" class="btn button text-center">S'inscrire</button>
+                {{ form_end(registrationForm) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

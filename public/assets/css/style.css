@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #FFFDF7;
+    --white: #FFFFFF;
+    --lightgreen: #E8F0E3;
+    --sand: #EBE3D3;
+    --camel: #F7F1EC;
+    --grey: #333333;
+    --green: #497555;
+    --borderlight: #F6F5F0;
+    --borderdark: #666666;
+    --buttonlight: #565656;
+    --buttondark: #000000;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    color: var(--grey);
+    font-size: 14px;
+}
+
+.linkColor{
+    color: var(--grey);
+}
+
+.header{
+    background-color: var(--background);
+    border-bottom: 1px solid var(--borderlight);
+    padding: 16px 8px 16px 100px;
+    /*border: 1px solid red;*/
+}
+
+.footer{
+    background-color: var(--white);
+    border-bottom: 1px solid var(--borderlight);
+    /*height: 50px;*/
+    padding: 16px 100px;
+}
+
+.button{
+    background-color: var(--buttondark);
+    color: var(--white);
+    border-radius: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.button:hover{
+    background-color: var(--buttonlight);
+    color: var(--white)
+}
+
+/** HOME **/
+
+.heroHeader{
+    height: 751px;
+    display: flex;
+    width: 100%;
+    background-color: var(--lightgreen);
+}
+
+.welcome{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+}
+
+.welcomeTitle{
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.welcomeText{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.homeImg{
+    max-height: 751px;
+    width: 731px;
+}
+
+/** REGISTER / CONNECTION **/
+
+.register{
+    display: flex;
+    flex-direction: row;
+}
+
+.registerImg{
+    height: auto;
+    max-width: 734px;
+}
