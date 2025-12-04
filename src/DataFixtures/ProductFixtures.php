@@ -62,7 +62,7 @@ class ProductFixtures extends Fixture
                 Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
                 Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
                 "price" => 32,
-                "picture" => "",
+                "picture" => "lavenderCandles.webp",
                 "created_at" => new \DateTimeImmutable(),
                 "updated_at" => new \DateTimeImmutable(),
             ],
@@ -73,7 +73,7 @@ class ProductFixtures extends Fixture
                 Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
                 Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
                 "price" => 5.40,
-                "picture" => "lavenderCandles.webp",
+                "picture" => "toothbrushes.webp",
                 "created_at" => new \DateTimeImmutable(),
                 "updated_at" => new \DateTimeImmutable(),
             ],
