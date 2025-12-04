@@ -27,6 +27,7 @@ body {
     flex-direction: column;
     color: var(--grey);
     font-size: 14px;
+    font-weight: 400;
 }
 
 .linkColor{
@@ -92,9 +93,18 @@ body {
 
 /** REGISTER / CONNECTION **/
 
-.register{
+.register,
+.connection{
     display: flex;
     flex-direction: row;
+}
+
+.questionLink{
+    color: var(--grey);
+    text-decoration: underline;
+}
+.questionLink:hover{
+    color: var(--grey);
 }
 
 .registerImg{

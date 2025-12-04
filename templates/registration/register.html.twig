@@ -9,30 +9,34 @@
         </div>
         <div class="col-6">
             <div class="col-6 p-2 m-auto">
-                <p class="h3 mt-5">Inscription</p>
-                <p class="mt-4">Tous les champs sont obligatoires</p>
+                <div class="h3 mt-5">Inscription</div>
+                <div class="mt-4">Tous les champs sont obligatoires</div>
 
                 {{ form_errors(registrationForm) }}
 
                 {{ form_start(registrationForm) }}
-                <p class="mt-2">
+                <div class="mt-2">
                     {{ form_row(registrationForm.lastName) }}
-                </p>
-                <p class="mt-2">
+                </div>
+                <div class="mt-2">
                     {{ form_row(registrationForm.firstName) }}
-                </p>
-                <p class="mt-2">
+                </div>
+                <div class="mt-2">
                     {{ form_row(registrationForm.email) }}
-                </p>
-                <p class="mt-2">
+                </div>
+                <div class="mt-2">
                     {{ form_row(registrationForm.password) }}
-                </p>
-                <p class="mt-2">
+                </div>
+                <div class="mt-2">
                     {{ form_row(registrationForm.agreeTerms) }}
-                </p>
+                </div>
 
-                <button type="submit" class="btn button text-center">S'inscrire</button>
+                <button type="submit" class="btn button mt-3">S'inscrire</button>
                 {{ form_end(registrationForm) }}
+                <div class="mt-3 text-center">
+                    <a href="{{ path('app_login') }}" class="questionLink">Déjà un compte ? Se connecter</a>
+                </div>
+
             </div>
 
         </div>
