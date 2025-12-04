@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(UserRepository $userRepository, ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository): Response
     {
         $user = $this->getUser();
         $products = $productRepository->findAll();

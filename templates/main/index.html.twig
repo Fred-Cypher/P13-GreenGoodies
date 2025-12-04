@@ -21,4 +21,20 @@
             <img src="{{ asset('assets/images/home.webp') }}" alt="" class="homeImg">
         </div>
     </div>
+    <div class="homeProductsTitle">NOS PRODUITS</div>
+    <div class="homeProducts col-12 flex-wrap">
+            {% for product in products %}
+                    <div class="card text-center col-4 m-auto">
+                        <div class="homeCardPicture">
+                            <img src=" {{ asset('assets/images/' ~ product.picture ) }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title">{{ product.name }}</p>
+                            <p class="card-text">{{ product.shortDescription }}</p>
+                            <p class="card-price">{{ product.price }}€ </p>
+                            <a href="#" class="">Voir le produit</a>
+                        </div>
+                    </div>
+            {% endfor %}
+    </div>
 {% endblock %}
