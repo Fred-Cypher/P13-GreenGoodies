@@ -110,6 +110,12 @@ body {
     object-fit: cover;
 }
 
+.card,
+.card-img-top
+{
+    border-radius: 0;
+}
+
 .card-title{
     font-weight: 600;
     font-size: 16px;
