@@ -32,9 +32,37 @@
                             <p class="card-title">{{ product.name }}</p>
                             <p class="card-text">{{ product.shortDescription }}</p>
                             <p class="card-price">{{ product.price }}€ </p>
-                            <a href="#" class="">Voir le produit</a>
+                            <a href="#" ><p class="homeProductButton">Voir le produit</p></a>
                         </div>
                     </div>
             {% endfor %}
+    </div>
+    <div class="belief">
+        <div class="col-6 align-content-end">
+            <div class="beliefTitle">NOTRE CONVICTION</div>
+            <div class="beliefText">
+                Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants.
+                Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique
+            </div>
+        </div>
+        <div class="col-6 beliefImg">
+            <img src="{{ asset('assets/images/flowers.webp') }}" alt="" class="beliefFlowers">
+        </div>
+    </div>
+    <div class="values">
+        <div class="col-6 valuesImg">
+            <img src="{{ asset('assets/images/plasticBags.webp') }}" alt="" class="beliefFlowers">
+        </div>
+        <div class="col-6 align-content-end">
+            <div class="testAlign">
+                <div class="valuesTitle">NOTRE VALEURS</div>
+                <div class="valuesText">
+                    Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité. <br>
+                    Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques. <br>
+                    Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.
+                </div>
+            </div>
+
+        </div>
     </div>
 {% endblock %}
