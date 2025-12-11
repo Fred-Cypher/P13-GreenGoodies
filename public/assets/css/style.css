@@ -129,7 +129,6 @@ body {
 }
 
 .homeProductButton{
-    width: 30rem;
     height: 4.8rem;
     background-color: transparent;
     color: var(--black);
@@ -144,7 +143,6 @@ body {
 .belief{
     display: flex;
     flex-direction: row;
-    color: var(--darkgrey);
     width: auto;
     background-color: var(--camel);
 }
@@ -178,7 +176,6 @@ body {
 .values{
     display: flex;
     flex-direction: row;
-    color: var(--darkgrey);
     width: auto;
     background-color: var(--lightgreen);
 }
@@ -227,4 +224,74 @@ body {
 .registerImg{
     height: auto;
     max-width: 734px;
+}
+
+
+/** PRODUCT **/
+
+.productSheet{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productImg{
+    width: 45rem;
+    height: 43rem;
+}
+
+.productImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productText{
+    margin: auto;
+    width: 45rem;
+    height: 43rem;
+    justify-items: center;
+}
+
+.productDetails{
+    width: 30rem;
+    height: 43rem;
+}
+
+.productName{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.productPrice{
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--darkgrey)
+}
+
+.detailsDescription{
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--grey)
+}
+
+.fullDescription{
+    color: var(--grey)
+}
+
+.showProductButton{
+/* coller en bas */
+}
+
+.addToBasket{
+    height: 4.8rem;
+    background-color: var(--buttonlight);
+    color: var(--white);
+    align-content: center;
+    text-align: center;
+}
+
+.addToBasket:hover{
+    background-color: var(--black);
+    color: var(--white);
 }
