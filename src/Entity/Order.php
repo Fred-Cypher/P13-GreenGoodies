@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\OrderStatusEnum;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,11 +24,8 @@ class Order
     #[ORM\Column(length: 20)]
     private ?string $orderNumber = null;
 
-    /**
-     * @var Collection<int, Product>
-     */
-    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'orders')]
-    private Collection $products;
+    #[ORM\Column(type: 'string', enumType: OrderStatusEnum::class)]
+    private OrderStatusEnum $status;
 
     #[ORM\Column]
     private ?float $totalPrice = null;
@@ -41,9 +39,16 @@ class Order
     #[ORM\Column]
     private ?\DateTimeImmutable $validatedAt = null;
 
+    /**
+     * @var Collection<int, OrderDetail>
+     */
+    #[ORM\OneToMany(targetEntity: OrderDetail::class, mappedBy: 'orderId', orphanRemoval: true)]
+    private Collection $orderDetails;
+
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->status = OrderStatusEnum::PENDING;
+        $this->orderDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,27 +80,14 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection<int, Product>
-     */
-    public function getProducts(): Collection
+    public function getStatus(): OrderStatusEnum
     {
-        return $this->products;
+        return $this->status;
     }
 
-    public function addProduct(Product $product): static
+    public function setStatus(OrderStatusEnum $status): self
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        $this->products->removeElement($product);
-
+        $this->status = $status;
         return $this;
     }
 
@@ -143,6 +135,36 @@ class Order
     public function setValidatedAt(\DateTimeImmutable $validatedAt): static
     {
         $this->validatedAt = $validatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderDetail>
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetail $orderDetail): static
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails->add($orderDetail);
+            $orderDetail->setOrderId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderDetail(OrderDetail $orderDetail): static
+    {
+        if ($this->orderDetails->removeElement($orderDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($orderDetail->getOrderId() === $this) {
+                $orderDetail->setOrderId(null);
+            }
+        }
 
         return $this;
     }
