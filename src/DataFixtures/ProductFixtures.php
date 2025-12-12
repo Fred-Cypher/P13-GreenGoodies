@@ -14,9 +14,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Kit d'hygiène recyclable",
                 "short_description" => "Pour une salle de bain éco-friendly",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 24.99,
                 "picture" => "recyclableHygieneKit.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -25,9 +27,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Shot Tropical",
                 "short_description" => "Fruits frais, pressés à froid",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 4.50,
                 "picture" => "tropicalShot.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -36,9 +40,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Gourde en bois",
                 "short_description" => "50 cl, bois d'olivier",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 16.90,
                 "picture" => "woodenGourde.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -47,9 +53,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Disques Démaquillants x3",
                 "short_description" => "Solution efficace pour vous démaquiller en douceur",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 19.90,
                 "picture" => "makeupRemoverPads.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -58,9 +66,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Bougie Lavande & Patchouli",
                 "short_description" => "Cire naturelle",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 32,
                 "picture" => "lavenderCandles.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -69,9 +79,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Brosse à dents",
                 "short_description" => "Bois de hêtre rouge issu de forêts gérées durablement",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 5.40,
                 "picture" => "toothbrushes.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -80,9 +92,11 @@ class ProductFixtures extends Fixture
             [
                 "name" => "Kit couverts en bois",
                 "short_description" => "Revêtement Bio en olivier & sac de transport",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 12.30,
                 "picture" => "woodenCutlery.webp",
                 "created_at" => new \DateTimeImmutable(),
@@ -104,9 +118,11 @@ Grâce à sa formule non irritante et respectueuse de votre peau, Nécessaire of
             [
                 "name" => "Savon Bio",
                 "short_description" => "Thé, Orange & Girofle",
-                "full_description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Architecto dignissimos exercitationem illo magni, mollitia non provident quo voluptas voluptate.
-                Blanditiis commodi cupiditate dicta eveniet inventore ipsa magni reiciendis sunt voluptates",
+                "full_description" => "Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.
+
+Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+
+Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
                 "price" => 18.90,
                 "picture" => "soap.webp",
                 "created_at" => new \DateTimeImmutable(),
