@@ -275,12 +275,18 @@ body {
     color: var(--grey)
 }
 
-.fullDescription{
+.fullDescription,
+.quantityLabel{
     color: var(--grey)
 }
 
 .showProductButton{
 /* coller en bas */
+}
+
+.quantityNumber{
+    width: 3rem;
+    height: 2rem;
 }
 
 .addToBasket{
@@ -294,4 +300,83 @@ body {
 .addToBasket:hover{
     background-color: var(--black);
     color: var(--white);
+}
+
+/** CARD **/
+.cart{
+    background-color: var(--sand);
+}
+
+.cartTitle{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.basketCard{
+    width: 37.5rem;
+    background-color: var(--background);
+}
+
+.productCard{
+    height: 13.75rem;
+}
+
+.cartImg{
+    width: 8.9rem;
+    height: 8.3rem;
+}
+
+.cartImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cartProductName{
+    font-weight: 600;
+    color: var(--black)
+}
+
+.cartProductQuantity{
+    font-weight: 400;
+    color:var(--grey);
+}
+
+.cartProductPrice{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--darkgrey);
+}
+
+.cartPrice{
+    width: 37.5rem;
+    background-color: var(--background);
+}
+
+.cartButton{
+    display: flex;
+    justify-content: center;
+}
+
+.validateOrder{
+    height: 4.8rem;
+    width: 29.5rem;
+    background-color: var(--buttonlight);
+    color: var(--white);
+    align-content: center;
+    text-align: center;
+}
+
+.validateOrder:hover{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.totalPrice{
+    font-size: 20px;
+}
+
+.deliveryCharges{
+    font-size: 12px;
+    color: var(--grey)
 }

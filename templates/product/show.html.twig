@@ -15,7 +15,17 @@
                 <div class="fullDescription mt-1">{{ product.fullDescription|nl2br }}</div>
                 <div class="showProductButton mt-5">
                     {% if app.user %}
-                        <a href="#"><p class="addToBasket">Ajouter au panier</p></a>
+                        <form action="{{ path('app_add_product', {'id': product.id }) }}" method="post">
+                            <div>
+                                <label for="quantity" class="quantityLabel">Quantité à commander</label>
+                                <input type="number"  id="quantity" name="quantity" class="quantityNumber ms-2 text-end" value="{{ quantity ?? 0}}" min="0">
+                            </div>
+                            {% if quantity > 0%}
+                                <button type="submit" class="addToBasket form-control mt-3">Mettre à jour</button>
+                            {% else %}
+                                <button type="submit" class="addToBasket form-control mt-3">Ajouter au panier</button>
+                            {% endif %}
+                        </form>
                     {% else %}
                         <a href="{{ path('app_login') }}"><p class="addToBasket">Se connecter pour ajouter au panier</p></a>
                     {% endif %}
