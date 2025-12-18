@@ -3,66 +3,69 @@
 {% block title %}Green Goodies - Accueil{% endblock %}
 
 {% block body %}
-    <div class="heroHeader">
-        <div class="col-6 m-auto ">
-            <div class="welcome m-auto">
-                <div class="welcomeTitle">Bienvenue</div>
-                <div class="mt-5">
-                    <p class="welcomeText">
-                        Découvrez notre univers de produits durables et éthiques pour une consommation responsable
-                    </p>
-                    <p class="welcomeText">
-                        Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 justify-content-end">
-            <img src="{{ asset('assets/images/home.webp') }}" alt="" class="homeImg">
-        </div>
-    </div>
-    <div class="homeProductsTitle">NOS PRODUITS</div>
-    <div class="homeProducts col-12 flex-wrap">
-            {% for product in products %}
-                    <div class="card text-center col-4 m-auto">
-                        <div class="homeCardPicture">
-                            <img src=" {{ asset('assets/images/' ~ product.picture ) }}" class="card-img-top img-fluid" alt="{{ product.name }}">
-                        </div>
-                        <div class="card-body">
-                            <p class="card-title">{{ product.name }}</p>
-                            <p class="card-text">{{ product.shortDescription }}</p>
-                            <p class="card-price">{{ product.price }}€ </p>
-                            <a href="#" ><p class="homeProductButton">Voir le produit</p></a>
-                        </div>
+    <main>
+        <div class="heroHeader">
+            <div class="col-6 m-auto ">
+                <div class="welcome m-auto">
+                    <div class="welcomeTitle">Bienvenue</div>
+                    <div class="mt-5">
+                        <p class="welcomeText">
+                            Découvrez notre univers de produits durables et éthiques pour une consommation responsable
+                        </p>
+                        <p class="welcomeText">
+                            Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter
+                        </p>
                     </div>
-            {% endfor %}
-    </div>
-    <div class="belief">
-        <div class="col-6 align-content-end">
-            <div class="beliefTitle">NOTRE CONVICTION</div>
-            <div class="beliefText">
-                Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants.
-                Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique
-            </div>
-        </div>
-        <div class="col-6 beliefImg">
-            <img src="{{ asset('assets/images/flowers.webp') }}" alt="" class="beliefFlowers">
-        </div>
-    </div>
-    <div class="values">
-        <div class="col-6 valuesImg">
-            <img src="{{ asset('assets/images/plasticBags.webp') }}" alt="" class="beliefFlowers">
-        </div>
-        <div class="col-6 align-content-end">
-            <div class="testAlign">
-                <div class="valuesTitle">NOTRE VALEURS</div>
-                <div class="valuesText">
-                    Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité. <br>
-                    Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques. <br>
-                    Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.
                 </div>
             </div>
-
+            <div class="col-6 justify-content-end">
+                <img src="{{ asset('assets/images/home.webp') }}" alt="" class="homeImg">
+            </div>
         </div>
-    </div>
+        <div class="homeProductsTitle">NOS PRODUITS</div>
+        <div class="homeProducts col-12 flex-wrap">
+            {% for product in products %}
+                <div class="card text-center col-4 m-auto">
+                    <div class="homeCardPicture">
+                        <img src=" {{ asset('assets/images/' ~ product.picture ) }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title mt-2">{{ product.name }}</p>
+                        <p class="card-text">{{ product.shortDescription }}</p>
+                        <p class="card-price">{{ product.price|number_format(2, ',', ' ')  }}€ </p>
+                        <a href="{{ path('app_product_show', {'id': product.id}) }}"><div class="homeProductButton">Voir le produit</div></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="belief">
+            <div class="col-6 align-content-end">
+                <div class="beliefTitle">NOTRE CONVICTION</div>
+                <div class="beliefText">
+                    Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants.
+                    Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique
+                </div>
+            </div>
+            <div class="col-6 beliefImg">
+                <img src="{{ asset('assets/images/flowers.webp') }}" alt="" class="beliefFlowers">
+            </div>
+        </div>
+        <div class="values">
+            <div class="col-6 valuesImg">
+                <img src="{{ asset('assets/images/plasticBags.webp') }}" alt="" class="beliefFlowers">
+            </div>
+            <div class="col-6 align-content-end">
+                <div class="testAlign">
+                    <div class="valuesTitle">NOS VALEURS</div>
+                    <div class="valuesText">
+                        Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité. <br>
+                        Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques. <br>
+                        Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
 {% endblock %}
