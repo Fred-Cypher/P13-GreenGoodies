@@ -21,7 +21,7 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, unique: true, nullable: true)]
     private ?string $orderNumber = null;
 
     #[ORM\Column(type: 'string', enumType: OrderStatusEnum::class)]
@@ -36,13 +36,13 @@ class Order
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $validatedAt = null;
 
     /**
      * @var Collection<int, OrderDetail>
      */
-    #[ORM\OneToMany(targetEntity: OrderDetail::class, mappedBy: 'orderId', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: OrderDetail::class, mappedBy: 'order', orphanRemoval: true)]
     private Collection $orderDetails;
 
     public function __construct()
@@ -151,7 +151,7 @@ class Order
     {
         if (!$this->orderDetails->contains($orderDetail)) {
             $this->orderDetails->add($orderDetail);
-            $orderDetail->setOrderId($this);
+            $orderDetail->setOrder($this);
         }
 
         return $this;
@@ -161,8 +161,8 @@ class Order
     {
         if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderDetail->getOrderId() === $this) {
-                $orderDetail->setOrderId(null);
+            if ($orderDetail->getOrder() === $this) {
+                $orderDetail->setOrder(null);
             }
         }
 
