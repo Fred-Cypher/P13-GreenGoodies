@@ -312,6 +312,15 @@ body {
     font-weight: 500;
 }
 
+.emptyCart{
+    width: 37.5rem;
+}
+
+.emptyCart a{
+    text-decoration: none;
+    color: var(--grey);
+}
+
 .basketCard{
     width: 37.5rem;
     background-color: var(--background);

@@ -5,36 +5,46 @@
 {% block body %}
     <main class="cart">
         <div class="cartTitle text-center mt-5">Mon panier</div>
-        <div class="basketCard m-auto mt-3">
-            {% for item in cartItems %}
-                <div class="row m-auto productCard justify-content-center align-items-center">
-                    <div class="col-4 cartImg">
-                        <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid" alt="...">
-                    </div>
-                    <div class="col-7">
-                        <div class="card-body">
-                            <h5 class="cartProductName">{{ item.product.name }}</h5>
-                            <p class="cartProductQuantity">Quantité : {{ item.quantity }}</p>
-                            <p class="cartProductPrice">{{ item.priceAtOrder|number_format(2, ',', ' ') }}€</p>
-                            <p class="card-text text-end">
-                                <small class="text-muted">
-                                    Total pour ce produit : {{ (item.quantity * item.priceAtOrder)|number_format(2, ',', ' ') }}€
-                                </small>
-                            </p>
+        {% if order %}
+            <div class="m-auto emptyCart">
+                <form action="{{ path('app_cart_delete') }}" method="post">
+                    <button type="submit" class="">X Vider le panier</button>
+                </form>
+            </div>
+            <div class="basketCard m-auto mt-3">
+                {% for item in cartItems %}
+                    <div class="row m-auto productCard justify-content-center align-items-center">
+                        <div class="col-4 cartImg">
+                            <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid" alt="...">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <h5 class="cartProductName">{{ item.product.name }}</h5>
+                                <p class="cartProductQuantity">Quantité : {{ item.quantity }}</p>
+                                <p class="cartProductPrice">{{ item.priceAtOrder|number_format(2, ',', ' ') }}€</p>
+                                <p class="card-text text-end">
+                                    <small class="text-muted">
+                                        Total pour ce produit
+                                        : {{ (item.quantity * item.priceAtOrder)|number_format(2, ',', ' ') }}€
+                                    </small>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="cartPrice m-auto mt-1 text-end px-4 py-3">
-            <div class="totalPrice">Total panier : {{ order.totalPrice|number_format(2, ',', ' ') }} €</div>
-            <div class="deliveryCharges">Frais de livraison : Offert</div>
-        </div>
-        <div class="cartButton mt-3 mb-4">
-            <form action="{{ path('app_validate_order') }} " method="post">
-                <button type="submit" class="form-control validateOrder">Valider la commande</button>
-            </form>
-        </div>
+                {% endfor %}
+            </div>
+            <div class="cartPrice m-auto mt-1 text-end px-4 py-3">
+                <div class="totalPrice">Total panier : {{ order.totalPrice|number_format(2, ',', ' ') }} €</div>
+                <div class="deliveryCharges">Frais de livraison : Offert</div>
+            </div>
+            <div class="cartButton mt-3 mb-4">
+                <form action="{{ path('app_validate_order') }} " method="post">
+                    <button type="submit" class="form-control validateOrder">Valider la commande</button>
+                </form>
+            </div>
+        {% else %}
+            <div>Votre panier est vide</div>
+        {% endif %}
     </main>
 
 {% endblock %}
