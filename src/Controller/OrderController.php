@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\OrderDetail;
 use App\Entity\Product;
 use App\Enum\OrderStatusEnum;
 use App\Service\CartService;;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +16,7 @@ class OrderController extends AbstractController
 {
     public function __construct(
         private readonly CartService $cartService,
+        private readonly EntityManagerInterface $em,
     ){}
 
     #[Route('/cart', name: 'app_cart_show', methods: ['GET'])]
@@ -28,6 +29,11 @@ class OrderController extends AbstractController
         }
 
         $order = $this->cartService->getCurrentCart($user);
+        if(!$order){
+            return $this->render('order/cart.html.twig', [
+                'order' => $order,
+            ]);
+        }
         $cartItems = $order->getOrderDetails();
 
         return $this->render('order/cart.html.twig', [
@@ -36,7 +42,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/add/{id}', name: 'app_add_product', methods: ['POST'])]
+    #[Route('/cart/add/{id}', name: 'app_add_product', methods: ['POST'])]
     public function addOrUpdateProduct(Product $product, Request $request): Response
     {
         $user = $this->getUser();
@@ -54,7 +60,7 @@ class OrderController extends AbstractController
     }
 
 
-    #[Route('/validate', name:'app_validate_order', methods: ['POST'])]
+    #[Route('/cart/validate', name:'app_validate_order', methods: ['POST'])]
     public function validateOrder(): Response
     {
         $user = $this->getUser();
@@ -75,4 +81,26 @@ class OrderController extends AbstractController
 
         return $this->redirectToRoute('app_home');
     }
+
+
+    #[Route('/cart/delete', name: 'app_cart_delete', methods: ['POST'])]
+    public function deleteCart(): Response
+    {
+        $user = $this->getUser();
+
+        if(!$user instanceof \App\Entity\User){
+            return $this->redirectToRoute('app_login');
+        }
+        $order = $this->cartService->getCurrentCart($user);
+
+        if (!$order) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        $this->em->remove($order);
+        $this->em->flush();
+
+        return $this->redirectToRoute('app_cart_show');
+    }
+
 }
