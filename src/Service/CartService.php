@@ -7,13 +7,16 @@ use App\Entity\OrderDetail;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Enum\OrderStatusEnum;
+use App\Repository\OrderDetailRepository;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Random\RandomException;
 
 readonly class CartService
 {
     public function __construct(
         private OrderRepository $orderRepository,
+        private OrderDetailRepository $orderDetailRepository,
         private EntityManagerInterface $em
     ) {
     }
@@ -47,24 +50,16 @@ readonly class CartService
 
     public function addOrUpdateProduct(Order $order, Product $product, int $quantity): void
     {
-        $detailFound = false;
+        $detail = $this->orderDetailRepository->findOneByOrderAndProduct($order, $product);
 
-        foreach ($order->getOrderDetails() as $detail) {
-            if ($detail->getProduct()->getId() === $product->getId()) {
-                $detailFound = true;
-
-                if ($quantity <= 0) {
-                    $order->removeOrderDetail($detail);
-                } else {
-                    $detail->setQuantity($quantity);
-                    $detail->setUpdatedAt(new \DateTimeImmutable());
-                }
-
-                break;
+        if ($detail) {
+            if ($quantity <= 0) {
+                $order->removeOrderDetail($detail);
+            } else {
+                $detail->setQuantity($quantity);
+                $detail->setUpdatedAt(new \DateTimeImmutable());
             }
-        }
-
-        if (!$detailFound && $quantity > 0) {
+        } elseif ($quantity > 0) {
             $detail = new OrderDetail();
             $detail->setOrder($order);
             $detail->setProduct($product);
@@ -78,8 +73,14 @@ readonly class CartService
         }
 
         $this->recalculateOrderTotal($order);
-
         $this->em->flush();
+    }
+
+    public function getProductQuantityInCart(Order $order, Product $product): int
+    {
+        $detail = $this->orderDetailRepository->findOneByOrderAndProduct($order, $product);
+
+        return $detail ? $detail->getQuantity() : 0;
     }
 
     private function recalculateOrderTotal(Order $order): void
@@ -94,6 +95,9 @@ readonly class CartService
         $order->setUpdatedAt(new \DateTimeImmutable());
     }
 
+    /**
+     * @throws RandomException
+     */
     public function validateOrder(Order $order): void
     {
         if ($order->getOrderDetails()->isEmpty()) {
@@ -111,8 +115,14 @@ readonly class CartService
         $this->em->flush();
     }
 
+    /**
+     * @throws RandomException
+     */
     public function generateOrderNumber(Order $order): string
     {
-        return sprintf('GG-%06d', $order->getId());
+        return sprintf('GG-%s-%s',
+            (new \DateTimeImmutable())->format('Ymd'),
+            strtoupper(bin2hex(random_bytes(3)))
+        );
     }
 }

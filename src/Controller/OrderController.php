@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Enum\OrderStatusEnum;
 use App\Service\CartService;;
 use Doctrine\ORM\EntityManagerInterface;
+use Random\RandomException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,6 +61,9 @@ class OrderController extends AbstractController
     }
 
 
+    /**
+     * @throws RandomException
+     */
     #[Route('/cart/validate', name:'app_validate_order', methods: ['POST'])]
     public function validateOrder(): Response
     {

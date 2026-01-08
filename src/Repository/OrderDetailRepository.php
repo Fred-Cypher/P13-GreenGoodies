@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Order;
 use App\Entity\OrderDetail;
+use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +16,14 @@ class OrderDetailRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, OrderDetail::class);
+    }
+
+    public function findOneByOrderAndProduct(Order $order, Product $product): ?OrderDetail
+    {
+        return $this->findOneBy([
+            'order' => $order,
+            'product' => $product,
+        ]);
     }
 
     //    /**

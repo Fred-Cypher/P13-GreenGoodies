@@ -34,12 +34,7 @@ final class ProductController extends AbstractController
         if ($user instanceof User) {
             $order = $this->cartService->getOrCreateCurrentCart($user);
 
-            foreach ($order->getOrderDetails() as $orderDetail) {
-                if ($orderDetail->getProduct()->getId() === $product->getId()) {
-                    $quantityInCart = $orderDetail->getQuantity();
-                    break;
-                }
-            }
+            $quantityInCart = $this->cartService->getProductQuantityInCart($order, $product);
         }
 
         $form = $this->createForm(OrderDetailFormType::class, null, [
