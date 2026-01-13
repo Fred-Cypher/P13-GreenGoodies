@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -23,19 +24,29 @@ class RegistrationFormType extends AbstractType
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'class' => 'form-control mt-3'
+                    'class' => 'mt-3'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez renseigner votre nom.']),
                 ]
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
-                    'class' => 'form-control mt-3'
+                    'class' => 'mt-3'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez renseigner votre prenom.']),
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
                 'attr' => [
-                    'class' => 'form-control mt-3'
+                    'class' => 'mt-3'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez renseigner votre email.']),
+                    new Email(['message' => 'Adresse email invalide.'])
                 ]
             ])
             ->add('password', RepeatedType::class, [
@@ -43,11 +54,12 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'options' => [
                     'attr' => [
                         'type' => 'password',
                         'autocomplete' => 'new-password',
-                        'class' => 'form-control mt-3 mb-3'
+                        'class' => 'mt-3 mb-3'
                     ]
                 ],
                 'first_options' => ['label' => 'Mot de passe '],
@@ -65,15 +77,15 @@ class RegistrationFormType extends AbstractType
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'J\'accepte les CGU de GreenGoodies',
-                'label_attr' => [
-                    'class' => 'form-check-label'
-                ],
-                'row_attr' => [
-                    'class' => 'form-check'
-                ],
+//                'label_attr' => [
+//                    'class' => 'form-check-label'
+//                ],
+//                'row_attr' => [
+//                    'class' => 'form-check'
+//                ],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'J\'accepte les CGU de GreenGoodies',
+                        'message' => 'Vous devez accepter les conditions d\'utilisation.',
                     ]),
                 ],
             ])

@@ -11,9 +11,8 @@
             <div class="col-6 p-2 m-auto">
                 <form action="{{ path('app_login') }}" method="post">
                     {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        <div class="alert alert-danger">{{ error.messageKey == 'Invalid credentials.' ? 'Identifiants incorrects.' : error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
-
                     <div class="h3 mt-5">Connexion</div>
                     <div class="mt-5">
                         <label for="username">Adresse email</label>
