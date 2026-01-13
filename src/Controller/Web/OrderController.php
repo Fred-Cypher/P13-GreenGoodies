@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Web;
 
 use App\Entity\Product;
 use App\Enum\OrderStatusEnum;
-use App\Service\CartService;;
+use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Random\RandomException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

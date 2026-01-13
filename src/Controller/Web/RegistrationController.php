@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Web;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
-
-use function Symfony\Component\Clock\now;
 
 class RegistrationController extends AbstractController
 {
