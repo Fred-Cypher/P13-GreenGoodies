@@ -6,16 +6,16 @@
     <main class="cart">
         <div class="cartTitle text-center mt-5">Mon panier</div>
         {% if order %}
-            <div class="m-auto emptyCart">
+            <div class="m-auto col-5">
                 <form action="{{ path('app_cart_delete') }}" method="post">
-                    <button type="submit" class="">X Vider le panier</button>
+                    <button type="submit" class=" border border-0 bg-transparent">X Vider le panier</button>
                 </form>
             </div>
-            <div class="basketCard m-auto mt-3">
+            <div class="basketCard m-auto mt-3 col-12 col-md-5">
                 {% for item in cartItems %}
-                    <div class="row m-auto productCard justify-content-center align-items-center">
-                        <div class="col-4 cartImg">
-                            <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid" alt="...">
+                    <div class="row m-auto justify-content-center align-items-center p-3">
+                        <div class="col-4 mt-1">
+                            <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid py-4" alt="...">
                         </div>
                         <div class="col-7">
                             <div class="card-body">
@@ -33,18 +33,22 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="cartPrice m-auto mt-1 text-end px-4 py-3">
-                <div class="totalPrice">Total panier : {{ order.totalPrice|number_format(2, ',', ' ') }} €</div>
-                <div class="deliveryCharges">Frais de livraison : Offert</div>
+            <div class="cartPrice m-auto mt-1 text-end px-4 py-3 col-12 col-md-5">
+                <div>Total panier :
+                    <span class="totalPrice">
+                        {{ order.totalPrice|number_format(2, ',', ' ') }} €
+                    </span>
+                </div>
+                <div class="deliveryCharges px-2">Frais de livraison : Offert</div>
             </div>
-            <div class="cartButton mt-3 mb-4">
+            <div class="cartButton m-auto mt-3 mb-5 col-12 col-md-5">
                 <form action="{{ path('app_validate_order') }} " method="post">
-                    <button type="submit" class="form-control validateOrder">Valider la commande</button>
+                    <button type="submit" class="form-control validateOrder button">Valider la commande</button>
                 </form>
             </div>
         {% else %}
-            <div class="noCart m-auto mt-5 align-content-center">
-                <div class="text-center">
+            <div class="noCart m-auto mt-5 align-content-center col-12 col-md-5 py-5">
+                <div class="text-center py-4">
                     Votre panier est vide
                 </div>
             </div>

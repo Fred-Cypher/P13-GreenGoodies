@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'class' => 'mt-3'
+                    'class' => 'form-control-lg',
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez renseigner votre nom.']),
@@ -33,7 +33,7 @@ class RegistrationFormType extends AbstractType
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
-                    'class' => 'mt-3'
+                    'class' => 'form-control-lg'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez renseigner votre prenom.']),
@@ -42,7 +42,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
                 'attr' => [
-                    'class' => 'mt-3'
+                    'class' => 'form-control-lg'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez renseigner votre email.']),
@@ -59,7 +59,7 @@ class RegistrationFormType extends AbstractType
                     'attr' => [
                         'type' => 'password',
                         'autocomplete' => 'new-password',
-                        'class' => 'mt-3 mb-3'
+                        'class' => 'form-control-lg mb-3'
                     ]
                 ],
                 'first_options' => ['label' => 'Mot de passe '],

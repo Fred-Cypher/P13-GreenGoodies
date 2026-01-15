@@ -77,6 +77,7 @@ class OrderController extends AbstractController
 
         if ($order->getStatus() !== OrderStatusEnum::PENDING || $order->getOrderDetails()->isEmpty()) {
             $this->addFlash('warning', 'Commande invalide ou panier vide');
+            return $this->redirectToRoute('app_home');
         }
 
         $this->cartService->validateOrder($order);

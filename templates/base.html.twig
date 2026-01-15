@@ -9,6 +9,9 @@
         {% block stylesheets %}
         {% endblock %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
         {% block javascripts %}
@@ -17,6 +20,17 @@
     </head>
     <body class="page-wrapper">
         {% include "parts/_header.html.twig" %}
+
+        <div class="container">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
 
         {% block body %}{% endblock %}
 

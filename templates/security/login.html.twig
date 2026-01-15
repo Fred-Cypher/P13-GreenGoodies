@@ -3,7 +3,7 @@
 {% block title %}GreenGoodies - Connexion{% endblock %}
 
 {% block body %}
-    <div class="connection">
+    <div class="row col-12">
         <div class="col-6">
             <img src="{{ asset('assets/images/flowers.webp') }}" alt="" class="registerImg">
         </div>
@@ -13,22 +13,25 @@
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey == 'Invalid credentials.' ? 'Identifiants incorrects.' : error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
-                    <div class="h3 mt-5">Connexion</div>
-                    <div class="mt-5">
+                    <div class="h3 mt-5 col-12">Connexion</div>
+                    <div class="mt-5" >
                         <label for="username">Adresse email</label>
-                        <input type="email" value="{{ email }}" name="_username" id="username" class="form-control mt-3" autocomplete="email" required autofocus>
+                        <input type="email" value="{{ email }}" name="_username" id="username" class="form-control-lg border mt-3 col-12" autocomplete="email" required autofocus>
                     </div>
                     <div class="mt-3">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="_password" id="password" class="form-control mt-3" autocomplete="current-password" required>
+                        <input type="password" name="_password" id="password" class="form-control-lg border mt-3 col-12" autocomplete="current-password" required>
                     </div>
                     <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
-                    <button class="btn button mt-4" type="submit">
-                        Se connecter
-                    </button>
+                    <div class="mt-2">
+                        <button class="btn button mt-4" type="submit">
+                            Se connecter
+                        </button>
+                    </div>
+
                     <p class="mt-3 text-center">
-                        <a href="{{ path('app_register') }}" class="questionLink">Pas encore de compte ? S'inscrire</a>
+                        <a href="{{ path('app_register') }}" class="questionLink text-decoration-underline">Pas encore de compte ? S'inscrire</a>
                     </p>
                 </form>
             </div>

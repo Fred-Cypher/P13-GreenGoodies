@@ -5,7 +5,7 @@
 {% block body %}
     <main class="ordersProfile">
         <div class="profileTitle text-center mt-5">Mon compte</div>
-        <div class="listOrders m-auto mt-5 p-5">
+        <div class="listOrders m-auto mt-5 p-5 col-12 col-md-5">
             <div class="ordersTitle">Mes commandes</div>
             {% if orders is empty %}
                 <div class="noOrder mt-3">Vous n'avez aucune commande enregistrée sur votre compte pour l'instant</div>
@@ -23,7 +23,7 @@
                             <tr class="tableLine">
                                 <td class="tableCell py-3">{{ order.orderNumber }}</td>
                                 <td class="tableCell py-3">{{ order.validatedAt|date('d/m/Y') }}</td>
-                                <td class="tableCell py-3 ps-4">{{ order.totalPrice|number_format(2, ',', ' ') }} €</td>
+                                <td class="tableCell py-3 ps-2 text-end">{{ order.totalPrice|number_format(2, ',', ' ') }} €</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -31,23 +31,23 @@
             {% endif %}
         </div>
 
-        <div class="apiAccess m-auto mt-3 p-5">
+        <div class="apiAccess m-auto mt-3 p-5  col-12 col-md-5">
             <div class="accessTitle ms-3">Mon accès API</div>
             <div class="mt-4">
                 <form action="{{ path('app_profile_api_access') }}" method="post">
                     {% if app.user.apiAccess %}
-                        <button type="submit" class="form-control apiAccessButton m-auto">Désactiver mon accès API</button>
+                        <button type="submit" class="form-control apiAccessButton button m-auto">Désactiver mon accès API</button>
                     {% else %}
-                        <button type="submit" class="form-control apiAccessButton m-auto">Activer mon accès API</button>
+                        <button type="submit" class="form-control apiAccessButton button m-auto">Activer mon accès API</button>
                     {% endif %}
                 </form>
             </div>
 
         </div>
-        <div class="accountDelete m-auto mt-3 p-5 mb-5">
+        <div class="accountDelete m-auto mt-3 p-5 mb-5  col-12 col-md-5">
             <form action="{{ path('app_profile_delete') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete-user') }}">
-                <button type="submit" class="form-control apiAccessButton m-auto">Supprimer mon compte</button>
+                <button type="submit" class="form-control apiAccessButton button m-auto">Supprimer mon compte</button>
             </form>
         </div>
     </main>
