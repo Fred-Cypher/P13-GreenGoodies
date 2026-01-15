@@ -4,31 +4,31 @@
 
 {% block body %}
     <div class="productSheet mb-5 col-12">
-        <div class="col-12 col-md-6 productImg m-0">
-            <img src=" {{ asset('assets/images/' ~ product.picture) }} "  alt="">
+        <div class="col-12 col-md-6 m-0 m-0">
+            <img src="{{ asset('assets/images/' ~ product.picture) }}"  class="w-100" alt="">
         </div>
         <div class="col-12 col-md-6 m-0 m-auto">
-            <div class="col-8 m-auto pt-4">
+            <div class="col-8 m-auto pt-3">
                 <div class="productName mt-5">{{ product.name }}</div>
                 <div class="productPrice mt-3">{{ product.price|number_format(2, ',', ' ') }}€</div>
-                <div class="detailsDescription mt-5" >Description</div>
-                <div class="fullDescription mt-1">{{ product.fullDescription|nl2br }}</div>
+                <div class="detailsDescription mt-5 text-secondary" >Description</div>
+                <div class="fullDescription text-secondary mt-1">{{ product.fullDescription|nl2br }}</div>
                 <div class="mt-5 ">
                     {% if app.user %}
                         {{ form_start(form, {'action': path('app_product_show', {'id': product.id})}) }}
                         <div>
-                            {{ form_label(form.quantity, null, {'label_attr': {'class': 'quantityLabel'}}) }}
+                            {{ form_label(form.quantity, null, {'label_attr': {'class': 'text-secondary'}}) }}
                             <div class="col-3">
                                 {{ form_widget(form.quantity) }}
                             </div>
                         </div>
 
-                        <button type="submit" class="button form-control mt-3 p-4">
+                        <button type="submit" class="btn btn-dark form-control mt-3 p-4">
                             {{ quantity > 0 ? 'Mettre à jour' : 'Ajouter au panier' }}
                         </button>
                         {{ form_end(form) }}
                     {% else %}
-                        <a href="{{ path('app_login') }}"><p class="addToBasket p-4">Se connecter pour ajouter au panier</p></a>
+                        <a href="{{ path('app_login') }}"><p class="btn btn-dark p-4 w-100">Se connecter pour ajouter au panier</p></a>
                     {% endif %}
                 </div>
             </div>
