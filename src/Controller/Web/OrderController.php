@@ -52,7 +52,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $quantity = max(1, (int) $request->request->get('quantity', 1));
+        $quantity = max(1, (int) $request->request->get('quantity', 0));
 
         $order = $this->cartService->getOrCreateCurrentCart($user);
         $this->cartService->addOrUpdateProduct($order, $product, $quantity);
