@@ -13,7 +13,6 @@ class JWTAuthenticationFailureListener
     public function onAuthenticationFailure(AuthenticationFailureEvent $event): void
     {
         $exception = $event->getException();
-//        dd($exception->getMessage());
 
         if ($exception->getMessage() === 'API_ACCESS_DISABLED')
         {

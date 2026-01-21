@@ -12,11 +12,19 @@ class ProductsApiController extends AbstractController
     #[Route('/api/products', name: 'api_products', methods: ['GET'])]
     public function getAllProducts(ProductRepository $productRepository): JsonResponse
     {
+        $user = $this->getUser();
         $products = $productRepository->findAll();
 
         if(empty($products)){
-            return $this->json('Aucun produit trouvé', 404);
+            return $this->json([], 200);
         }
+
+        if (!$user || !$user->isApiAccess()) {
+            return $this->json([
+                'error' => 'Accès API désactivé ou non autorisé'
+            ], 403);
+        }
+
         return $this->json(
             $products,
             200,
