@@ -5,41 +5,44 @@
 {% block title %}GreenGoodies - Inscription{% endblock %}
 
 {% block body %}
-    <div class="row g-0">
-        <div class="col-6">
-            <img src="{{ asset('assets/images/foliage.webp') }}" alt="" class="registerImg">
-        </div>
-        <div class="col-6">
-            <div class="col-6 p-2 m-auto">
-                <div class="h3 mt-5">Inscription</div>
-                <div class="mt-4">Tous les champs sont obligatoires</div>
+    <main>
+        <div class="row g-0">
+            <div class="col-12 col-md-6">
+                <img src="{{ asset('assets/images/foliage.webp') }}" alt="Feuillage" class="w-100" loading="lazy">
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="col-10 col-md-6 p-2 m-auto">
+                    <div class="h3 mt-5">Inscription</div>
+                    <div class="mt-4">Tous les champs sont obligatoires</div>
 
-                {{ form_errors(registrationForm) }}
+                    {{ form_errors(registrationForm) }}
 
-                {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
-                <div class="mt-4">
-                    {{ form_row(registrationForm.lastName) }}
-                </div>
-                <div class="mt-4">
-                    {{ form_row(registrationForm.firstName) }}
-                </div>
-                <div class="mt-4">
-                    {{ form_row(registrationForm.email) }}
-                </div>
-                <div class="mt-4">
-                    {{ form_row(registrationForm.password) }}
-                </div>
-                <div class="mt-4">
-                    {{ form_widget(registrationForm.agreeTerms) }}
-                    {{ form_label(registrationForm.agreeTerms) }}
-                    {{ form_errors(registrationForm.agreeTerms) }}
-                </div>
-                <button type="submit" class="btn btn-dark w-100 mt-5 p-3">S'inscrire</button>
-                {{ form_end(registrationForm) }}
-                <div class="mt-3 text-center">
-                    <a href="{{ path('app_login') }}" class="linkColor text-decoration-underline">Déjà un compte ? Se connecter</a>
+                    {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="mt-4">
+                        {{ form_row(registrationForm.lastName) }}
+                    </div>
+                    <div class="mt-4">
+                        {{ form_row(registrationForm.firstName) }}
+                    </div>
+                    <div class="mt-4">
+                        {{ form_row(registrationForm.email) }}
+                    </div>
+                    <div class="mt-4">
+                        {{ form_row(registrationForm.password) }}
+                    </div>
+                    <div class="mt-4">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms) }}
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100 mt-5 p-3">S'inscrire</button>
+                    {{ form_end(registrationForm) }}
+                    <div class="mt-3 text-center">
+                        <a href="{{ path('app_login') }}" class="linkColor text-decoration-underline">Déjà un compte ?
+                            Se connecter</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

@@ -3,35 +3,38 @@
 {% block title %}Green Goodies - {{ product.name }}{% endblock %}
 
 {% block body %}
-    <div class="productSheet mb-5 col-12">
-        <div class="col-12 col-md-6 m-0 m-0">
-            <img src="{{ asset('assets/images/' ~ product.picture) }}"  class="w-100" alt="">
-        </div>
-        <div class="col-12 col-md-6 m-0 m-auto">
-            <div class="col-8 m-auto pt-3">
-                <div class="productName mt-5">{{ product.name }}</div>
-                <div class="productPrice mt-3">{{ product.price|number_format(2, ',', ' ') }}€</div>
-                <div class="detailsDescription mt-5 text-secondary" >Description</div>
-                <div class="fullDescription text-secondary mt-1">{{ product.fullDescription|nl2br }}</div>
-                <div class="mt-5 ">
-                    {% if app.user %}
-                        {{ form_start(form, {'action': path('app_product_show', {'id': product.id})}) }}
-                        <div>
-                            {{ form_label(form.quantity, null, {'label_attr': {'class': 'text-secondary'}}) }}
-                            <div class="col-3">
-                                {{ form_widget(form.quantity) }}
+    <main>
+        <div class="row mb-5 col-12 align-items-center">
+            <div class="col-12 col-md-6 m-0">
+                <img src="{{ asset('assets/images/' ~ product.picture) }}" class="w-100" alt="{{ product.name }}" loading="lazy">
+            </div>
+            <div class="col-12 col-md-6 m-0 m-auto">
+                <div class="col-8 m-auto pt-3">
+                    <div class="size20 weight500 mt-4">{{ product.name }}</div>
+                    <div class="size30 mt-3 fw-light">{{ product.price|number_format(2, ',', ' ') }}€</div>
+                    <div class="size10 mt-5 text-secondary fw-normal">Description</div>
+                    <div class="text-secondary mt-1">{{ product.fullDescription|nl2br }}</div>
+                    <div class="mt-4">
+                        {% if app.user %}
+                            {{ form_start(form, {'action': path('app_product_show', {'id': product.id})}) }}
+                            <div>
+                                {{ form_label(form.quantity, null, {'label_attr': {'class': 'text-secondary size12'}}) }}
+                                <div class="col-3">
+                                    {{ form_widget(form.quantity) }}
+                                </div>
                             </div>
-                        </div>
 
-                        <button type="submit" class="btn btn-dark form-control mt-3 p-4">
-                            {{ quantity > 0 ? 'Mettre à jour' : 'Ajouter au panier' }}
-                        </button>
-                        {{ form_end(form) }}
-                    {% else %}
-                        <a href="{{ path('app_login') }}"><p class="btn btn-dark p-4 w-100">Se connecter pour ajouter au panier</p></a>
-                    {% endif %}
+                            <button type="submit" class="btn btn-dark mt-3 form-control p-4 w-100">
+                                {{ quantity > 0 ? 'Mettre à jour' : 'Ajouter au panier' }}
+                            </button>
+                            {{ form_end(form) }}
+                        {% else %}
+                            <a href="{{ path('app_login') }}"><p class="btn btn-dark p-4 w-100">Se connecter pour
+                                    ajouter au panier</p></a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

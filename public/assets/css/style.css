@@ -39,11 +39,19 @@
 }
 
 .btn-dark {
-    --bs-btn-bg: var(--buttonlight);
-    --bs-btn-border-color: var(--buttonlight);
-    --bs-btn-hover-bg: var(--black);
-    --bs-btn-hover-border-color: var(--black);
-    --bs-btn-color: var(--white);
+    background-color: var(--buttonlight) !important;
+    border-color: var(--buttonlight) !important;
+    color: var(--white) !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body .btn-dark:hover,
+body .btn-dark:active,
+body .btn-dark:focus {
+    background-color: var(--black) !important;
+    border-color: var(--black) !important;
+    color: var(--white) !important;
+    box-shadow: none !important;
 }
 
 .btn-outline-dark {
@@ -72,11 +80,8 @@ a{
 
 body {
     display: flex;
-    flex-direction: column;
     font-size: 14px;
     font-weight: 400;
-    max-width: 100vw;
-    height: 100%;
 }
 
 .page-wrapper {
@@ -97,127 +102,39 @@ main {
     color: var(--darkgrey);
 }
 
-/** HOME **/
-
-.heroHeader{
-    display: flex;
-}
-
-.welcomeTitle{
+.weight500{
     font-weight: 500;
 }
 
-.welcomeText{
-    font-size: 18px;
-}
-
-.homeImg{
-    width: 100%;
-}
-
-.card-title{
-    font-size: 16px;
-}
-
-.beliefTitle{
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.beliefText{
-    font-weight: 300;
-}
-
-.beliefImg{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.valuesTitle{
-    font-size: 20px;
-    font-weight: 500;
-}
-
-/** REGISTER / CONNECTION **/
-
-.registerImg{
-    width: 734px;
-}
-
-/** PRODUCT **/
-
-.productSheet{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.productName{
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.productPrice{
-    font-size: 30px;
-    font-weight: 300;
-}
-
-.detailsDescription{
-    font-size: 10px;
-    font-weight: 400;
-}
-
-/** CARD **/
-
-.cartTitle,
-.profileTitle{
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.noCart{
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.cartProductName{
+.weight600{
     font-weight: 600;
 }
 
-.cartProductQuantity{
-    font-weight: 400;
+.size10{
+    font-size: 10px;
 }
 
-.cartProductPrice{
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.cartButton{
-    display: flex;
-    justify-content: center;
-}
-
-.validateOrder{
-    width: 29.5rem;
-}
-
-.totalPrice{
-    font-size: 20px;
-}
-
-.deliveryCharges{
+.size12{
     font-size: 12px;
 }
 
-.ordersTitle,
-.accessTitle{
-    font-weight: 600;
+.size16{
+    font-size: 16px;
 }
 
-.tableCell{
-    font-weight: 500;
+.size18{
+    font-size: 18px
 }
+
+.size20{
+    font-size: 20px;
+}
+
+.size30{
+    font-size: 30px;
+}
+
+/** CARD **/
 
 .tableLine{
     border-bottom: 1px solid var(--grey);

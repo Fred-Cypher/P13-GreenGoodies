@@ -4,31 +4,31 @@
 
 {% block body %}
     <main>
-        <div class="heroHeader bg-lightgreen col-12 flex-wrap">
+        <div class="row w-100 g-0 bg-lightgreen col-12 flex-wrap">
             <div class="col-12 col-md-6 m-auto">
                 <div class="flex-column m-auto col-6">
-                    <div class="welcomeTitle display-3">Bienvenue</div>
+                    <div class="weight500 display-3">Bienvenue</div>
                     <div class="mt-5">
-                        <p class="welcomeText fw-light">
+                        <p class="size18 fw-light">
                             Découvrez notre univers de produits durables et éthiques pour une consommation responsable
                         </p>
-                        <p class="welcomeText fw-light">
+                        <p class="size18 fw-light">
                             Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 justify-content-end">
-                <img src="{{ asset('assets/images/home.webp') }}" alt="" class="homeImg">
+                <img src="{{ asset('assets/images/home.webp') }}" alt="Image d'accueil, une chaise avec une pancarte posée dessus" class="w-100" loading="lazy">
             </div>
         </div>
         <div class="p-4 ms-5 my-1" id="products">NOS PRODUITS</div>
         <div class="row col-12 flex-wrap g-0">
             {% for product in products %}
                 <div class="card text-center col-12 col-md-4 m-auto border border-0">
-                    <img src=" {{ asset('assets/images/' ~ product.picture ) }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    <img src=" {{ asset('assets/images/' ~ product.picture ) }}" class="card-img-top img-fluid" alt="{{ product.name }}" loading="lazy">
                     <div class="card-body p-0">
-                        <p class="card-title mt-4 fw-bold">{{ product.name }}</p>
+                        <p class="card-title size16 mt-4 fw-bold">{{ product.name }}</p>
                         <p class="card-text text-wrap text-secondary">{{ product.shortDescription }}</p>
                         <p class="card-price">{{ product.price|number_format(2, ',', ' ')  }}€ </p>
                         <a href="{{ path('app_product_show', {'id': product.id}) }}"><div class="btn-outline-dark p-4 align-content-center">Voir le produit</div></a>
@@ -38,22 +38,22 @@
         </div>
         <div class="bg-camel row col-12 g-0">
             <div class="col-12 col-md-7 align-content-end">
-                <div class="beliefTitle ps-5">NOTRE CONVICTION</div>
-                <div class="beliefText col-7 ps-5 py-4 mb-2">
+                <div class="size20 weight500 ps-5">NOTRE CONVICTION</div>
+                <div class="fw-light col-7 ps-5 py-4 mb-2">
                     Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants.
                     Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique
                 </div>
             </div>
-            <div class="col-12 col-md-5 beliefImg p-0">
-                <img src="{{ asset('assets/images/flowers.webp') }}" alt="" class="">
+            <div class="col-12 col-md-5 g-0">
+                <img src="{{ asset('assets/images/flowers.webp') }}" alt="Branche fleurie" class="w-100" loading="lazy">
             </div>
         </div>
         <div class="bg-lightgreen row col-12 g-0">
             <div class="col-12 col-md-5">
-                <img src="{{ asset('assets/images/plasticBags.webp') }}" alt="" class="">
+                <img src="{{ asset('assets/images/plasticBags.webp') }}" alt="Sacs en plastique verts" class="w-100" loading="lazy">
             </div>
             <div class="col-12 col-md-7 align-content-end p-4 row justify-content-end">
-                <div class="valuesTitle col-8 pb-3 ps-5">NOS VALEURS</div>
+                <div class="size20 weight500 col-8 pb-3 ps-5">NOS VALEURS</div>
                 <div class="col-8 fw-light ps-5 pb-3 justify-content-end">
                     Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité. <br>
                     Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques. <br>

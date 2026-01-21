@@ -4,24 +4,26 @@
 
 {% block body %}
     <main class="bg-sand">
-        <div class="cartTitle text-center mt-5">Mon panier</div>
+        <div class="size20 weight500 text-center mt-5">Mon panier</div>
         {% if order %}
             <div class="m-auto col-5">
                 <form action="{{ path('app_cart_delete') }}" method="post">
-                    <button type="submit" class=" border border-0 bg-transparent">X Vider le panier</button>
+                    <button type="submit" class="border border-0 bg-transparent">X Vider le panier</button>
                 </form>
             </div>
             <div class="bg-background m-auto mt-3 col-12 col-md-5">
                 {% for item in cartItems %}
                     <div class="row m-auto justify-content-center align-items-center p-3">
                         <div class="col-4 mt-1">
-                            <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid py-4" alt="...">
+                            <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid py-4"
+                                 alt="{{ item.product.name }}" loading="lazy">
                         </div>
                         <div class="col-7">
                             <div class="card-body">
-                                <h5 class="cartProductName text-black">{{ item.product.name }}</h5>
-                                <p class="cartProductQuantity text-secondary">Quantité : {{ item.quantity }}</p>
-                                <p class="cartProductPrice">{{ item.priceAtOrder|number_format(2, ',', ' ') }}€</p>
+                                <h5 class="weight600 text-black">{{ item.product.name }}</h5>
+                                <p class="fw-normal text-secondary">Quantité
+                                    : {{ item.quantity }}</p>
+                                <p class="size18 weight500">{{ item.priceAtOrder|number_format(2, ',', ' ') }}€</p>
                                 <p class="card-text text-end">
                                     <small class="text-muted">
                                         Total pour ce produit
@@ -33,21 +35,26 @@
                     </div>
                 {% endfor %}
             </div>
+
             <div class="bg-background m-auto mt-1 text-end px-4 py-3 col-12 col-md-5">
                 <div>Total panier :
-                    <span class="totalPrice">
+                    <span class="size20">
                         {{ order.totalPrice|number_format(2, ',', ' ') }} €
                     </span>
                 </div>
-                <div class="deliveryCharges text-secondary px-2">Frais de livraison : Offert</div>
+                <div class="size12 text-secondary px-2">Frais de livraison : Offert</div>
             </div>
-            <div class="cartButton m-auto mt-3 mb-5 col-12 col-md-5">
+
+            <div class="m-auto mt-3 mb-5 col-12 col-md-5 justify-content-center px-5">
                 <form action="{{ path('app_validate_order') }} " method="post">
-                    <button type="submit" class="form-control btn btn-dark p-4 validateOrder">Valider la commande</button>
+                    <button type="submit" class="btn btn-dark p-4 w-100">Valider la
+                        commande
+                    </button>
                 </form>
             </div>
+
         {% else %}
-            <div class="noCart bg-background m-auto mt-5 align-content-center col-12 col-md-5 py-5">
+            <div class="size16 weight500 bg-background m-auto mt-5 align-content-center col-12 col-md-5 py-5">
                 <div class="text-center py-4">
                     Votre panier est vide
                 </div>

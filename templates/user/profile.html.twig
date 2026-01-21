@@ -4,43 +4,47 @@
 
 {% block body %}
     <main class="bg-sand">
-        <div class="profileTitle text-center mt-5">Mon compte</div>
+        <div class="size20 weight500 text-center mt-5">Mon compte</div>
         <div class="bg-background m-auto mt-5 p-5 col-12 col-md-5">
-            <div class="ordersTitle text-black">Mes commandes</div>
+            <div class="weight600 text-black">Mes commandes</div>
             {% if orders is empty %}
-                <div class="noOrder mt-3">Vous n'avez aucune commande enregistrée sur votre compte pour l'instant</div>
+                <div class="mt-3">Vous n'avez aucune commande enregistrée sur votre compte pour l'instant</div>
             {% else %}
                 <table class="mt-3 col-12">
                     <thead>
-                        <tr>
-                            <th class="text-secondary col-5">N°</th>
-                            <th class="text-secondary col-5">Date</th>
-                            <th class="text-secondary col-2 ps-4">Prix</th>
-                        </tr>
+                    <tr>
+                        <th class="text-secondary col-5">N°</th>
+                        <th class="text-secondary col-5">Date</th>
+                        <th class="text-secondary col-2 ps-4">Prix</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {% for order in orders %}
-                            <tr class="tableLine">
-                                <td class="tableCell py-3">{{ order.orderNumber }}</td>
-                                <td class="tableCell py-3">{{ order.validatedAt|date('d/m/Y') }}</td>
-                                <td class="tableCell py-3 ps-2 text-end">{{ order.totalPrice|number_format(2, ',', ' ') }} €</td>
-                            </tr>
-                        {% endfor %}
+                    {% for order in orders %}
+                        <tr class="tableLine">
+                            <td class="weight500 py-3">{{ order.orderNumber }}</td>
+                            <td class="weight500 py-3">{{ order.validatedAt|date('d/m/Y') }}</td>
+                            <td class="weight500 py-3 ps-2 text-end">{{ order.totalPrice|number_format(2, ',', ' ') }}
+                                €
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             {% endif %}
         </div>
 
-        <div class="bg-background m-auto mt-3 p-5  col-12 col-md-5">
-            <div class="accessTitle text-black ms-3">Mon accès API</div>
+        <div class="bg-background m-auto mt-3 p-5 col-12 col-md-5">
+            <div class="weight600 text-black ms-3">Mon accès API</div>
             <div class="mt-4 px-4">
                 <form action="{{ path('app_profile_api_access') }}" method="post">
                     {% if app.user.apiAccess %}
-                        <button type="submit" class="form-control btn btn-dark p-4 m-auto">Désactiver mon accès API</button>
+                        <button type="submit" class="btn btn-dark p-4 w-100">Désactiver mon accès API
+                        </button>
                     {% else %}
-                        <button type="submit" class="form-control btn btn-dark p-4 m-auto">Activer mon accès API</button>
+                        <button type="submit" class="btn btn-dark p-4 w-100">Activer mon accès API
+                        </button>
                     {% endif %}
-            </form>
+                </form>
             </div>
 
         </div>
@@ -48,7 +52,8 @@
             <div class="px-4">
                 <form action="{{ path('app_profile_delete') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete-user') }}">
-                    <button type="submit" class="form-control btn btn-dark p-4 button m-auto">Supprimer mon compte</button>
+                    <button type="submit" class="btn btn-dark p-4 button w-100">Supprimer mon compte
+                    </button>
                 </form>
             </div>
         </div>
