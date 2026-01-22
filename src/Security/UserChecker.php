@@ -17,10 +17,11 @@ class UserChecker implements UserCheckerInterface
 
     public function checkPostAuth(UserInterface $user): void
     {
-        if (!$user instanceof User) return;
+        if (!$user instanceof User) {
+            return;
+        }
 
-        if (!$user->isApiAccess())
-        {
+        if (!$user->isApiAccess()) {
             throw new CustomUserMessageAuthenticationException('API_ACCESS_DISABLED');
         }
     }

@@ -15,10 +15,12 @@ final class MainController extends AbstractController
         $user = $this->getUser();
         $products = $productRepository->findAll();
 
-        return $this->render('main/index.html.twig',
+        return $this->render(
+            'main/index.html.twig',
             [
                 'user' => $user,
                 'products' => $products,
-            ]);
+            ]
+        );
     }
 }

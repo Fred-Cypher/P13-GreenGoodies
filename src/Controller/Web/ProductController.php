@@ -15,7 +15,8 @@ final class ProductController extends AbstractController
 {
     public function __construct(
         private readonly CartService $cartService,
-    ){}
+    ) {
+    }
 
     #[Route('/product/{id}', name: 'app_product_show')]
     public function show(Product $product, Request $request): Response

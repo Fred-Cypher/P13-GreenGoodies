@@ -120,7 +120,8 @@ readonly class CartService
      */
     public function generateOrderNumber(Order $order): string
     {
-        return sprintf('GG-%s-%s',
+        return sprintf(
+            'GG-%s-%s',
             (new \DateTimeImmutable())->format('Ymd'),
             strtoupper(bin2hex(random_bytes(3)))
         );

@@ -15,7 +15,7 @@ class ProductsApiController extends AbstractController
         $user = $this->getUser();
         $products = $productRepository->findAll();
 
-        if(empty($products)){
+        if (empty($products)) {
             return $this->json([], 200);
         }
 

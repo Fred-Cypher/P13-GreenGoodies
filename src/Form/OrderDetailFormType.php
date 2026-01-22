@@ -16,8 +16,7 @@ class OrderDetailFormType extends AbstractType
                 'label' => 'Quantité à commander',
                 'attr' => ['min' => 0],
                 'data' => $options['quantity'] ?? 0
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

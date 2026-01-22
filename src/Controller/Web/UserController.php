@@ -30,8 +30,8 @@ class UserController extends AbstractController
     }
 
     #[Route('/profile/api-access', name: 'app_profile_api_access', methods: ['POST'])]
-    public function apiAccess(EntityManagerInterface $em): Response{
-
+    public function apiAccess(EntityManagerInterface $em): Response
+    {
         $this->getUser()->setApiAccess(!$this->getUser()->isApiAccess());
         $this->getUser()->setUpdatedAt(new \DateTimeImmutable());
 

@@ -18,7 +18,8 @@ class CartController extends AbstractController
     public function __construct(
         private readonly CartService $cartService,
         private readonly EntityManagerInterface $em,
-    ){}
+    ) {
+    }
 
     #[Route('/', name: 'app_cart_show', methods: ['GET'])]
     public function cartShow(): Response
@@ -33,7 +34,7 @@ class CartController extends AbstractController
     #[Route('/add/{id}', name: 'app_add_product', methods: ['POST'])]
     public function addOrUpdateProduct(Product $product, Request $request): Response
     {
-        $quantity = max(1, (int) $request->request->get('quantity', 0));
+        $quantity = max(1, (int)$request->request->get('quantity', 0));
 
         $cart = $this->cartService->getOrCreateCurrentCart($this->getUser());
         $this->cartService->addOrUpdateProduct($cart, $product, $quantity);
@@ -45,7 +46,7 @@ class CartController extends AbstractController
     /**
      * @throws RandomException
      */
-    #[Route('/validate', name:'app_validate_order', methods: ['POST'])]
+    #[Route('/validate', name: 'app_validate_order', methods: ['POST'])]
     public function validateOrder(): Response
     {
         $cart = $this->cartService->getOrCreateCurrentCart($this->getUser());

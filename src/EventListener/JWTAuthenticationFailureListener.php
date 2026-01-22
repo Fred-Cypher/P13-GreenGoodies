@@ -14,8 +14,7 @@ class JWTAuthenticationFailureListener
     {
         $exception = $event->getException();
 
-        if ($exception->getMessage() === 'API_ACCESS_DISABLED')
-        {
+        if ($exception->getMessage() === 'API_ACCESS_DISABLED') {
             $response = new JWTAuthenticationFailureResponse(
                 'Accès API non activé pour cet utilisateur.',
                 403
