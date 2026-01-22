@@ -16,13 +16,6 @@ final class ProductController extends AbstractController
     public function __construct(
         private readonly CartService $cartService,
     ){}
-    #[Route('/product', name: 'app_product')]
-    public function index(): Response
-    {
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
-        ]);
-    }
 
     #[Route('/product/{id}', name: 'app_product_show')]
     public function show(Product $product, Request $request): Response
@@ -32,9 +25,9 @@ final class ProductController extends AbstractController
         $user = $this->getUser();
 
         if ($user instanceof User) {
-            $order = $this->cartService->getOrCreateCurrentCart($user);
+            $cart = $this->cartService->getOrCreateCurrentCart($user);
 
-            $quantityInCart = $this->cartService->getProductQuantityInCart($order, $product);
+            $quantityInCart = $this->cartService->getProductQuantityInCart($cart, $product);
         }
 
         $form = $this->createForm(OrderDetailFormType::class, null, [
@@ -46,7 +39,7 @@ final class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid() && $user instanceof User) {
             $data = $form->getData();
 
-            $this->cartService->addOrUpdateProduct($order, $product, $data['quantity']);
+            $this->cartService->addOrUpdateProduct($cart, $product, $data['quantity']);
             return $this->redirectToRoute('app_cart_show');
         }
 
