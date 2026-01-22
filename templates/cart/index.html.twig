@@ -5,14 +5,14 @@
 {% block body %}
     <main class="bg-sand">
         <div class="size20 weight500 text-center mt-5">Mon panier</div>
-        {% if order %}
+        {% if cart %}
             <div class="m-auto col-5">
                 <form action="{{ path('app_cart_delete') }}" method="post">
                     <button type="submit" class="border border-0 bg-transparent">X Vider le panier</button>
                 </form>
             </div>
             <div class="bg-background m-auto mt-3 col-12 col-md-5">
-                {% for item in cartItems %}
+                {% for item in cart.orderDetails %}
                     <div class="row m-auto justify-content-center align-items-center p-3">
                         <div class="col-4 mt-1">
                             <img src=" {{ asset('assets/images/' ~ item.product.picture) }}" class="img-fluid py-4"
@@ -39,7 +39,7 @@
             <div class="bg-background m-auto mt-1 text-end px-4 py-3 col-12 col-md-5">
                 <div>Total panier :
                     <span class="size20">
-                        {{ order.totalPrice|number_format(2, ',', ' ') }} €
+                        {{ cart.totalPrice|number_format(2, ',', ' ') }} €
                     </span>
                 </div>
                 <div class="size12 text-secondary px-2">Frais de livraison : Offert</div>
