@@ -17,14 +17,8 @@ class UserController extends AbstractController
     #[Route('/profile', name: 'app_profile')]
     public function profile(OrderRepository $orderRepository): Response
     {
-        $user = $this->getUser();
-
-        if(!$user instanceof User){
-            return $this->redirectToRoute('app_login');
-        }
-
         $orders = $orderRepository->findBy([
-            'user' => $user,
+            'user' => $this->getUser(),
             'status' => OrderStatusEnum::VALIDATED,
         ], [
             'validatedAt' => 'DESC'
@@ -37,14 +31,9 @@ class UserController extends AbstractController
 
     #[Route('/profile/api-access', name: 'app_profile_api_access', methods: ['POST'])]
     public function apiAccess(EntityManagerInterface $em): Response{
-        $user = $this->getUser();
 
-        if(!$user instanceof User){
-            return $this->redirectToRoute('app_login');
-        }
-
-        $user->setApiAccess(!$user->isApiAccess());
-        $user->setUpdatedAt(new \DateTimeImmutable());
+        $this->getUser()->setApiAccess(!$this->getUser()->isApiAccess());
+        $this->getUser()->setUpdatedAt(new \DateTimeImmutable());
 
         $em->flush();
 
