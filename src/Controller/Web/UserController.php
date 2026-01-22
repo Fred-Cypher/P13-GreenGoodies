@@ -11,10 +11,13 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[Route('/profile')]
+#[IsGranted('ROLE_USER')]
 class UserController extends AbstractController
 {
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/', name: 'app_profile')]
     public function profile(OrderRepository $orderRepository): Response
     {
         $orders = $orderRepository->findBy([
@@ -29,7 +32,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/api-access', name: 'app_profile_api_access', methods: ['POST'])]
+    #[Route('/api-access', name: 'app_profile_api_access', methods: ['POST'])]
     public function apiAccess(EntityManagerInterface $em): Response
     {
         $this->getUser()->setApiAccess(!$this->getUser()->isApiAccess());
@@ -40,23 +43,22 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_profile');
     }
 
-    #[Route('/profile/delete', name: 'app_profile_delete', methods: ['POST'])]
+    #[Route('/delete', name: 'app_profile_delete', methods: ['POST'])]
     public function delete(EntityManagerInterface $em, Request $request, Security $security): Response
     {
         $user = $this->getUser();
-
-        if (!$user instanceof User) {
-            return $this->redirectToRoute('app_login');
-        }
+        /** @var User $user */
 
         if (!$this->isCsrfTokenValid('delete-user', $request->request->get('_token'))) {
             throw $this->createAccessDeniedException();
         }
 
-        $security->logout(false);
-
         $em->remove($user);
         $em->flush();
+
+        $security->logout(false);
+
+        $this->addFlash('success', 'Votre compte a été supprimé avec succès.');
 
         return $this->redirectToRoute('app_home');
     }
