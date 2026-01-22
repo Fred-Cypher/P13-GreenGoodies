@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/cart')]
-class OrderController extends AbstractController
+class CartController extends AbstractController
 {
     public function __construct(
         private readonly CartService $cartService,
@@ -66,13 +66,13 @@ class OrderController extends AbstractController
     #[Route('/delete', name: 'app_cart_delete', methods: ['POST'])]
     public function deleteCart(): Response
     {
-        $order = $this->cartService->getCurrentCart($this->getUser());
+        $cart = $this->cartService->getCurrentCart($this->getUser());
 
-        if (!$order) {
+        if (!$cart) {
             return $this->redirectToRoute('app_home');
         }
 
-        $this->em->remove($order);
+        $this->em->remove($cart);
         $this->em->flush();
 
         return $this->redirectToRoute('app_cart_show');
