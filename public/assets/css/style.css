@@ -82,11 +82,7 @@ body {
     display: flex;
     font-size: 14px;
     font-weight: 400;
-}
-
-.page-wrapper {
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
 }
 
