@@ -56,7 +56,12 @@
                     </form>
                 </div>
             {% elseif cart.totalPrice == 0 %}
-                <div class="size16 weight500 bg-background m-auto mt-5 align-content-center col-12 col-md-5 py-5">
+                <div class="m-auto col-5 mt-5">
+                    <form action="{{ path('app_cart_delete') }}" method="post">
+                        <button type="submit" class="border border-0 bg-transparent">X Réinitialiser le panier</button>
+                    </form>
+                </div>
+                <div class="size16 weight500 bg-background m-auto mt-3 align-content-center col-12 col-md-5 py-5">
                     <div class="text-center py-4 lh-lg">
                         Vous avez supprimé tous les produits de votre panier <br>
                         ou vous avez oublié de préciser la quantité désirée
