@@ -2,14 +2,12 @@
 
 namespace App\Controller\Web;
 
-use App\Entity\Product;
 use App\Entity\User;
 use App\Enum\OrderStatusEnum;
 use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Random\RandomException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -43,28 +41,6 @@ class CartController extends AbstractController
             'cart' => $cart,
         ]);
     }
-
-    /**
-     * Add a product to the cart or update its quantity.
-     * Uses Symfony's ParamConverter to automatically fetch the Product entity.
-     */
-    #[Route('/add/{id}', name: 'app_add_product', methods: ['POST'])]
-    public function addOrUpdateProduct(Product $product, Request $request): Response
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-        // Ensure quantity is at least 1
-        $quantity = max(1, (int)$request->request->get('quantity', 0));
-
-        // Get existing cart or create a new one
-        $cart = $this->cartService->getOrCreateCurrentCart($user);
-
-        // Delegate add/update business logic to CartService
-        $this->cartService->addOrUpdateProduct($cart, $product, $quantity);
-
-        return $this->redirectToRoute('app_cart_show');
-    }
-
 
     /**
      * Validate the cart to finalize the order.
