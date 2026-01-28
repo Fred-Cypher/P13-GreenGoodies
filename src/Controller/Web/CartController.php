@@ -3,6 +3,7 @@
 namespace App\Controller\Web;
 
 use App\Entity\Product;
+use App\Entity\User;
 use App\Enum\OrderStatusEnum;
 use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,8 +34,10 @@ class CartController extends AbstractController
     #[Route('/', name: 'app_cart_show', methods: ['GET'])]
     public function cartShow(): Response
     {
+        /** @var User $user */
+        $user = $this->getUser();
         // Fetch the current cart using the CartService
-        $cart = $this->cartService->getCurrentCart($this->getUser());
+        $cart = $this->cartService->getCurrentCart($user);
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
@@ -48,11 +51,13 @@ class CartController extends AbstractController
     #[Route('/add/{id}', name: 'app_add_product', methods: ['POST'])]
     public function addOrUpdateProduct(Product $product, Request $request): Response
     {
+        /** @var User $user */
+        $user = $this->getUser();
         // Ensure quantity is at least 1
         $quantity = max(1, (int)$request->request->get('quantity', 0));
 
         // Get existing cart or create a new one
-        $cart = $this->cartService->getOrCreateCurrentCart($this->getUser());
+        $cart = $this->cartService->getOrCreateCurrentCart($user);
 
         // Delegate add/update business logic to CartService
         $this->cartService->addOrUpdateProduct($cart, $product, $quantity);
@@ -68,7 +73,10 @@ class CartController extends AbstractController
     #[Route('/validate', name: 'app_validate_order', methods: ['POST'])]
     public function validateOrder(): Response
     {
-        $cart = $this->cartService->getOrCreateCurrentCart($this->getUser());
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $cart = $this->cartService->getOrCreateCurrentCart($user);
 
         // Security check: ensure cart is not empty and is in PENDING status
         if ($cart->getStatus() !== OrderStatusEnum::PENDING || $cart->getOrderDetails()->isEmpty()) {
@@ -90,7 +98,10 @@ class CartController extends AbstractController
     #[Route('/delete', name: 'app_cart_delete', methods: ['POST'])]
     public function deleteCart(): Response
     {
-        $cart = $this->cartService->getCurrentCart($this->getUser());
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $cart = $this->cartService->getCurrentCart($user);
 
         if (!$cart) {
             return $this->redirectToRoute('app_home');
